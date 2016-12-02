@@ -11,13 +11,19 @@ Drupal.behaviors.IPUmap= {
  $(function () {
            
      
-    var tests=  Drupal.settings.IPUmap.testing;
-      console.log(tests);
+    var countries=  Drupal.settings.IPUmap.testing;
+      console.log(countries);
      
         var getElemID = function(elem) {
                 // Show element ID
     
-                return $(elem.node).attr("data-id")+": " + tests[$(elem.node).attr("data-id")];
+                return $(elem.node).attr("data-id")+": " + countries[$(elem.node).attr("data-id")];
+         };
+           
+         var getElemID1 = function(elem) {
+                // Show element ID
+    
+                return countries[$(elem.node).attr("data-id")];
          };
            
         
@@ -31,6 +37,7 @@ Drupal.behaviors.IPUmap= {
                      
                     
                      defaultArea: {
+                         value: getElemID1,
                         attrs: {
                          	fill: "#00A6B6",
                         	stroke: "#5d5d5d",
@@ -58,7 +65,7 @@ Drupal.behaviors.IPUmap= {
                         slices: [{
                             size: 30,
                             attrs: {
-                                fill: "#6F737"
+                                fill: "#6F7376"
                             },
                             label: "Non Member",
                             sliceValue: "Non Member"
@@ -76,19 +83,19 @@ Drupal.behaviors.IPUmap= {
                 areas: {   
 
                     
-"Afghanistan" : {value:countries["Afghanistan"],attrs: {"stroke-width":0.1,} },
-"Albania" : {value:countries["Albania" ],  attrs: {"stroke-width":0.1,} },
-"Algeria" : {value:countries["Algeria" ],  attrs: {"stroke-width":0.1,}},
-"Andorra" : { value:countries["Andorra" ], attrs: {"stroke-width":0.1,} },
-"Angola" : {value:countries["Angola" ],  attrs: {"stroke-width":0.1,} },
-"Antigua-and-Barbuda" : {value:countries["Antigua-and-Barbuda" ],},
-"Argentina" : {value:countries["Argentina" ],attrs: {"stroke-width":0.1,} },
-"Armenia" : {value:countries["Armenia"],attrs: {"stroke-width":0.1,}},
-"Asia and the Pacific" : {value:countries["Asia and the Pacific"], attrs: {"stroke-width":0.1,} },
-"Australia" : {value:countries["Australia"], attrs: {"stroke-width":0.1,} },
-"Austria" : {value:countries["Austria"], attrs: {"stroke-width":0.1,}},
-"Azerbaijan" : { value:countries["Azerbaijan"] },
-"Bahamas" : { value:countries["Bahamas"],},
+"Afghanistan" : {value:countries["Afghanistan"], tooltip: { "content":getElemID} ,attrs: {"stroke-width":0.1,} },
+"Albania" : {value:countries["Albania" ],tooltip: { "content":getElemID } ,  attrs: {"stroke-width":0.1,} },
+"Algeria" : {value:countries["Algeria" ], tooltip: { "content":getElemID } ,  attrs: {"stroke-width":0.1,}},
+"Andorra" : { value:countries["Andorra" ], tooltip: { "content":getElemID },attrs: {"stroke-width":0.1,} },
+"Angola" : {value:countries["Angola" ],tooltip: { "content":getElemID },  attrs: {"stroke-width":0.1,} },
+"Antigua and Barbuda" : {value:countries["Antigua and Barbuda" ],tooltip: { "content":getElemID }},
+"Argentina" : {value:countries["Argentina" ],tooltip: { "content":getElemID },attrs: {"stroke-width":0.1,} },
+"Armenia" : {value:countries["Armenia"],attrs: {"stroke-width":0.1,tooltip: { "content":getElemID }}},
+"Asia and the Pacific" : {value:countries["Asia and the Pacific"], attrs: {"stroke-width":0.1,},tooltip: { "content":getElemID } },
+"Australia" : {value:countries["Australia"], attrs: {"stroke-width":0.1,},tooltip: { "content":getElemID } },
+"Austria" : {value:countries["Austria"], attrs: {"stroke-width":0.1,},tooltip: { "content":getElemID }},
+"Azerbaijan" : { value:countries["Azerbaijan"],tooltip: { "content":getElemID } },
+"Bahamas" : { value:countries["Bahamas"],tooltip: { "content":getElemID }},
 "Bahrain" : {value:countries["Afghanistan" ]  },
 "Bangladesh" : { value:countries["Bahrain"],  },
 "Barbados" : {value:countries["Barbados"  ], },
@@ -120,54 +127,54 @@ Drupal.behaviors.IPUmap= {
 "Cote-D Ivoire" : { value:countries["Cote-D Ivoire" ],},
 "Croatia" : { value:countries["Croatia" ], },
 "Cuba" : {value:countries["Cuba"], },
-"Cyprus" : { value:countries["Cuba"],},
-"Czech Republic" : { value:countries["Cyprus"], },
-"Democratic People s Republic of Korea" : {value:countries["Cyprus"],},
-"Democratic-Republic-of-the-Congo" : {value:countries["Cyprus"], },
-"Denmark" : { value:countries["Cyprus"], },
-"Djibouti" : {value:countries["Cyprus"], },
-"Dominica" : {value:countries["Cyprus"], },
-"Dominican Republic" : { "value": "228",  "tooltip": { "content": "Dominican Republic", } },
-"Ecuador" : { "value": "228",  "tooltip": { "content": "Ecuador", } },
-"El-Salvador" : { "value": "228",  "tooltip": { "content": "El Salvador", } },
-"Equatorial Guinea" : { "value": "179",  "tooltip": { "content": "Equatorial Guinea", } },
-"Eritrea" : { "value": "179",  "tooltip": { "content": "Eritrea", },attrs: {fill: "#6F7376","stroke-width":0.1,} },
-"Estonia" : { "value": "103", "tooltip": { "content": "Estonia", } },
-"Ethiopia" : { "value": "179",  "tooltip": { "content": "Ethiopia: Member", } },
-"Europe and the CIS" : { "value": "0",  "tooltip": { "content": "Europe and the CIS", } },
-"Fiji" : { "value": "56",  "tooltip": { "content": "Fiji", } },
-"Finland" : { "value": "103",  "tooltip": { "content": "Finland", } },
-"Former-Yugoslav-Republic-of-Macedonia" : { "value": "103",  "tooltip": { "content": "Former Yugoslav Republic of Macedonia", } },
-"France" : { "value": "103",  "tooltip": { "content": "France", } },
-"Gabon" : { "value": "179",  "tooltip": { "content": "Gabon", } },
-"Gambia" : { "value": "179",  "tooltip": { "content": "Gambia", } },
-"Georgia" : { "value": "103",  "tooltip": { "content": "Georgia", } },
-"Germany" : { "value": "103",  "tooltip": { "content": "Germany", } },
-"Ghana" : { "value": "179",  "tooltip": { "content": "Ghana", } },
-"Greece" : { "value": "103",  "tooltip": { "content": "Greece", } },
-"Grenada" : { "value": "228",  "tooltip": { "content": "Grenada", } },
-"Guatemala" : { "value": "228",  "tooltip": { "content": "Guatemala", } },
-"Guinea" : { "value": "179", "tooltip": { "content": "Guinea", } },
-"Guinea-Bissau" : { "value": "179",  "tooltip": { "content": "Guinea-Bissau", } },
-"Guyana" : { "value": "228",  "tooltip": { "content": "Guyana", } },
-"Haiti" : { "value": "228",  "tooltip": { "content": "Haiti", } },
-"Honduras" : { "value": "228",  "tooltip": { "content": "Honduras", } },
-"Hungary" : { "value": "103",  "tooltip": { "content": "Hungary", } },
-"Iceland" : { "value": "103",  "tooltip": { "content": "Iceland", } },
-"Indonesia" : { "value": "56",  "tooltip": { "content": "Indonesia", } },
-"Iran-Islamic-Republic-of" : { },
-"Iraq" : { "value": "157",  "tooltip": { "content": "Iraq", } },
-"Ireland" : { "value": "103",  "tooltip": { "content": "Ireland", } },
-"Israel" : { "value": "157",  "tooltip": { "content": "Israel", } },
-"Italy" : { "value": "103", "tooltip": { "content": "Italy", } },
-"Jamaica" : { "value": "228",  "tooltip": { "content": "Jamaica", },attrs: {fill: "#6F7376","stroke-width":0.1,}  },
-"Japan" : { "value": "56",  "tooltip": { "content": "Japan", } },
-"Jordan" : { "value": "157",  "tooltip": { "content": "Jordan", } },
-"Kazakhstan" : { "value": "56", "tooltip": { "content": "Kazakhstan", } },
-"Kenya" : { "value": "179",  "tooltip": { "content": "Kenya", } },
-"Kiribati" : { "value": "56",  "tooltip": { "content": "Kiribati", } },
-"Kuwait" : { "value": "157", "tooltip": { "content": "Kuwait", } },
-"Kyrgyzstan" : { "value": "56",  "tooltip": { "content": "Kyrgyzstan", } },
+"Cyprus" : { value:countries["Cyprus"],},
+"Czech Republic" : { value:countries["Czech Republic"], },
+"Democratic People s Republic of Korea" : {value:countries["Democratic People s Republic of Korea"],},
+"Democratic Republic of the Congo" : {value:countries["Democratic Republic of the Congo"], },
+"Denmark" : { value:countries["Denmark"], },
+"Djibouti" : {value:countries["Djibouti"], },
+"Dominica" : {value:countries["Dominica"], },
+"Dominican Republic" : { value:countries["Dominican Republic"],},
+"Ecuador" : { value:countries["Ecuador"], },
+"El Salvador" : { value:countries["El Salvador"], },
+"Equatorial Guinea" : { value:countries["Equatorial Guinea"], },
+"Eritrea" : { value:countries["Eritrea"], },
+"Estonia" : { value:countries["Estonia"],},
+"Ethiopia" : {value:countries["Ethiopia"], },
+"Europe and the CIS" : { value:countries["Europe and the CIS"], },
+"Fiji" : { value:countries["Fiji"],},
+"Finland" : { value:countries["Finland"], },
+"Former Yugoslav Republic of Macedonia" : { value:countries["Former Yugoslav Republic of Macedonia"], },
+"France" : { value:countries["France"], },
+"Gabon" : {value:countries["Gabon"], },
+"Gambia" : { value:countries["Gambia"],},
+"Georgia" : { value:countries["Georgia"],},
+"Germany" : { value:countries["Germany"], },
+"Ghana" : {value:countries["Ghana"], },
+"Greece" : {value:countries["Greece"], },
+"Grenada" : { value:countries["Grenada" ], },
+"Guatemala" : { value:countries["Guatemala"], },
+"Guinea" : { value:countries["Guinea" ], },
+"Guinea Bissau" : {value:countries["Guinea Bissau" ], },
+"Guyana" : { value:countries["Guyana"], } },
+"Haiti" : { value:countries["Dominica"], },
+"Honduras" : { value:countries["Dominica"],},
+"Hungary" : { value:countries["Dominica"], },
+"Iceland" : { value:countries["Dominica"], },
+"Indonesia" : { value:countries["Dominica"], },
+"Iran Islamic Republic of" : {value:countries["Dominica"], },
+"Iraq" : {  value:countries["Iraq" ], },
+"Ireland" : { value:countries["Ireland"], },
+"Israel" : {  value:countries["Israel"], },
+"Italy" : { value:countries["Italy"], },
+"Jamaica" : { value:countries["Jamaica"], },
+"Japan" : { value:countries["Japan"],},
+"Jordan" : {value:countries["Jordan"], },
+"Kazakhstan" : { value:countries["Kazakhstan"], },
+"Kenya" : {value:countries["Kenya"], },
+"Kiribati" : {value:countries["Kiribati"],},
+"Kuwait" : { value:countries["Kuwait"], },
+"Kyrgyzstan" : { value:countries["Kyrgyzstan"],},
 "Lao People's Democratic Republic" : { "value": "56",  "tooltip": { "content": "Lao People's Democratic Republic", } },
 "Latvia" : { "value": "103",  "tooltip": { "content": "Latvia", } },
 "Lebanon" : { "value": "157",  "tooltip": { "content": "Lebanon", } },
@@ -276,7 +283,6 @@ Drupal.behaviors.IPUmap= {
  "Western Sahara" : { "value": "179",  "tooltip": { "content": "WESTERN SAHARA: Non Member",  } }, 
 "Pakistan" : { "value": "56",  "tooltip": { "content": "Pakistan", },attrs : {   stroke : "none", "stroke-width" : 0 ,
  } },
-
 "Jammu-and-Kashmir" : { "value": "56",  "tooltip": { "content": "Jammu and Kashmir: Non Member",  },attrs: {fill: "white","stroke-width":0.1, } },  
 "Gaza" : { "value": "157",  "tooltip": { "content": "Gaza (Occupied Palestinian Territory)",  },attrs : {   stroke : "none", "stroke-width" : 0 ,
  }, }, 
