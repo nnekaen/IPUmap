@@ -1,0 +1,128 @@
+<?php
+
+function IPUmap_enable()
+{
+
+$countries = array(
+
+"Afghanistan"=>"Member",
+"Albania"=>"Member", 
+"Algeria"=>"Member", 
+"Antigua-and-Barbuda"=>"Member",
+"Andorra"=>"Member", 
+"Argentina"=>"Member",
+"Armenia"=>"Member",
+"Asia and the Pacific"=>"Member",
+"Australia"=>"Member",
+"Austria"=>"Member",
+"Azerbaijan"=>"Member",
+"Bahamas"=>"Member",
+"Bahrain"=>"Member",
+"Bangladesh"=>"Member",
+"Barbados"=>"Member",
+"Belarus"=>"Member",
+ "Belgium"=>"Member",
+"Belize"=>"Member",
+"Benin"=>"Member",
+"Bhutan"=>"Member",
+"Bolivia Plurinational State of"=>"Member",
+"Bosnia and Herzegovina"=>"Member",
+"Botswana"=>"Member",
+"Brazil" =>"Member",
+"Brunei Darussalam"=>"Member",
+"Bulgaria"=>"Member",
+"Burkina Faso"=>"Member",
+"Burundi"=>"Member",
+"Cambodia"=>"Member",
+"Cameroon"=>"Member",
+"Canada"=>"Member",
+"Cape Verde"=>"Member",
+"Central African Republic"=>"Member",
+"Chad"=>"Member",
+"Chile"=>"Member",
+"China"=>"Member",
+"Colombia"=>"Member",
+"Comoros"=>"Member",
+"Congo"=>"Member",
+"Costa Rica"=>"Member",
+"Côte d’Ivoire"=>"Member" ,
+"Croatia"=>"Member",
+"Cuba"=>"Member",
+"Cyprus"=>"Member",
+"Czech Republic"=>"Member",
+"Democratic People s Republic of Korea"=>"Member",
+"Democratic-Republic-of-the-Congo"=>"Member",
+"Denmark"=>"Member",
+"Djibouti"=>"Member",
+"Dominica"=>"Member",
+"Dominican Republic"=>"Member",
+"Ecuador"=>"Member",
+"ElSalvador"=>"Member",
+"Equatorial Guinea"=>"Member",
+"Eritrea"=>"Member",
+"Estonia"=>"Member",
+"Ethiopiar" =>"Member",
+"Europe and the CIS"=>"Member",
+"Fiji"=>"Member",
+"Finland"=>"Member",
+"Former-Yugoslav-Republic-of-Macedonia"=>"Member",
+"France"=>"Member",
+"Gambia"=>"Member",
+"Germany"=>"Member",
+"Ghana"=>"Member",
+"Greece"=>"Member",
+"Grenada" =>"Member",
+"Guatemala" =>"Member",
+"Guinea" =>"Member",
+"Guinea-Bissau" =>"Member",
+"Guyana"=>"Member",
+"Haiti" =>"Member",
+"Honduras" =>"Member",
+"Hungary" =>"Member",
+"Iceland" =>"Member",
+"Indonesia" =>"Member",
+"Iran Islamic Republic of" =>"Member",
+"Iraq" =>"Member",
+"Ireland"=>"Member",
+"Israel"=>"Member",
+"Italy"=>"Member",
+"Jamaica"=>"Member",
+"Japan"=>"Member",
+"Jordan"=>"Member",
+"Kazakhstan"=>"Member",
+"Kenya"=>"Member",
+"Kiribati"=>"Member",
+"Kuwait"=>"Member",
+"Kyrgyzstan"=>"Member",
+
+);
+
+variable_set('IPUmap_status', $countries);
+
+
+}
+
+function IPUmap_schema() {
+ 
+ $schema ['IPUmap_tab'] = array(
+    'description' => 'table to create.',
+    'fields' => array(
+      'productid' => array(
+        'description' => 'The primary identifier for a stock.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'IPUmap_status' => array(
+        'description' => 'Countries',
+        'type' => 'text',
+        'unsigned' => TRUE,
+        'default' => 0,
+      ),
+       
+    ),
+    'primary key' => array('countryid'),
+  );
+
+  return $schema;
+}
