@@ -1,0 +1,6 @@
+name = IPUmap
+description = Allows user to  display the interactive map for members on a block. 
+core = 7.x 
+; NEW LINE
+configure = admin/config/content/IPUmap
+

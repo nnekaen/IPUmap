@@ -1,0 +1,155 @@
+<?php
+
+
+/**
+ * @file
+ * A block module that displays interactive_map in a block.
+ */
+function IPUmap_help($path, $arg) {
+
+switch ($path) {
+    case "admin/help#IPUmap":
+      return '' . t("shows interactive map") . '';
+      break;
+  }
+
+}
+
+
+/**
+ * Implements hook_block_info().
+ */
+function IPUmap_block_info() {
+  $blocks['maps'] = array(
+    // The name that will appear in the block list.
+    'info' => t('maps'),
+    
+  );
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view.
+ */
+function IPUmap_block_view($delta = '') {
+
+ $countries=variable_get('IPUmap_status');
+
+  drupal_add_js('sites/all/libraries/jquery-mousewheel/jquery.mousewheel.min.js');
+  drupal_add_js('sites/all/libraries/raphael/raphael-min.js');
+  drupal_add_js('sites/all/libraries/mapael/js/jquery.mapael.min.js');
+  drupal_add_js(array('IPUmap' => array('testing' => $countries)), array('type' => 'setting')); 
+  drupal_add_library('system', 'mapael');
+  drupal_add_library('system', 'raphael');
+          
+                  
+  $block = array();
+  switch ($delta) {
+    case 'maps':
+   $block['subject'] = t('testing block');
+      $block['content'] = array(
+        '#markup' => IPUmap_maps_content(),
+        '#attached' => array(
+          'css' => array(
+            drupal_get_path('module', 'IPUmap') . '/css/maps.css',
+          ),
+          'js' => array(
+               drupal_get_path('module', 'IPUmap') . '/js/maps.js',
+               drupal_get_path('module', 'IPUmap') . '/js/world_countries_un.js', 
+               
+          ),
+        ),
+      );
+      break;
+      }
+  return $block;
+}
+
+
+function IPUmap_maps_content() {
+  return ' 
+  <div id="test">
+    This text is for testing
+</div>
+
+
+  <div class="mapcontainer_un">
+    <div class="map">
+    </div>
+</div>';
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function IPUmap_menu() {
+  $items = array();
+
+  $items['admin/config/content/IPUmap'] = array(
+    'title' => 'Member Interactive Map',
+    'description' => 'Configuration for members  module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('IPUmap_form'),
+    'access arguments' => array('access administration pages'),
+    'type' =>  MENU_NORMAL_ITEM,
+    'access callback' => TRUE
+  );
+
+  return $items;
+}
+
+
+function IPUmap_form($form, &$form_state) {
+
+$countries=variable_get('IPUmap_status');
+
+
+
+
+foreach($countries as $key=>$value) {
+ 
+$form['IPUmap_keys'][$key]=array(
+      '#title' => $key,
+     '#type' => 'textfield',
+     '#default_value' =>$value,
+      );
+  }
+  
+$form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+   
+  );
+
+
+return $form;
+
+
+}
+
+
+
+
+
+
+function IPUmap_form_submit($form, &$form_state) {
+
+$newcountries=variable_get('IPUmap_status');
+
+foreach($newcountries as $key=>$val) {
+
+$newcountries[$key]=$form_state['values'][$key];
+
+}
+
+variable_set('IPUmap_status', $newcountries);
+
+
+drupal_set_message(t('Settings have been saved'));
+ 
+
+}
+
+
