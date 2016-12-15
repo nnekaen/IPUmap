@@ -107,7 +107,7 @@ function IPUmap_schema() {
  $schema ['IPUmap_tab'] = array(
     'description' => 'table to create.',
     'fields' => array(
-      'productid' => array(
+      'countryid' => array(
         'description' => 'The primary identifier for a stock.',
         'type' => 'serial',
         'unsigned' => TRUE,
