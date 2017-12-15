@@ -4,3 +4,6 @@ The Map visualizes contents of map area based on colors.
 The contents and colors of the Map can be configured by going to admin/configuration/member interactive map.
 
 <b>Technogies</b>: PHP, Javascript and Jquery
+
+Demo can be viewed at:http://dev-nnekatest.pantheonsite.io/
+
