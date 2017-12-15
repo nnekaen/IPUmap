@@ -5,5 +5,5 @@ The contents and colors of the Map can be configured by going to admin/configura
 
 <b>Technogies</b>: PHP, Javascript and Jquery
 
-Demo can be viewed at:http://dev-nnekatest.pantheonsite.io/
+Demo can be viewed under the Section 'Member' at: http://dev-nnekatest.pantheonsite.io/
 
